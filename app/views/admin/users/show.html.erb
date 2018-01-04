@@ -56,9 +56,9 @@
              <td><%= cc.exp_month %></td>
              <td><%= cc.exp_year %></td>
              <td><%= cc.ccv %></td>
-             <td><%= link_to "Show", "#" %></td>
+             <td><%= link_to "Show", admin_credit_card_path(cc) %></td>
              <td><%= link_to "Edit", edit_admin_user_credit_card_path(@user, cc) %></td>
-             <td><%= link_to "Delete", "#", method: "delete", data: { confirm: "Are you sure you want to delete credit card # #{cc.id}?" } %></td>
+             <td><%= link_to "Delete", admin_user_credit_card_path(cc), method: "delete", data: { confirm: "Are you sure you want to delete credit card # #{cc.id}?" } %></td>
            </tr>
            <% end %>
          </tbody>

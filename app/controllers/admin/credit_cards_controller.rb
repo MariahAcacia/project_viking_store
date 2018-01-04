@@ -45,6 +45,14 @@ class Admin::CreditCardsController < ApplicationController
 
 
   def destroy
+    @credit_card = CreditCard.find(params[:id])
+    if @credit_card.destroy
+      flash[:success] = "Credit Card Successfully Deleted"
+      redirect_to admin_user_path(@credit_card.user)
+    else
+      flash[:danger] = "User ##{@user.id} Could Not be Deleted"
+      redirect_to admin_user_path(@credit_card.user)
+    end
   end
 
 

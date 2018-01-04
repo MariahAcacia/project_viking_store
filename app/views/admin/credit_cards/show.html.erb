@@ -1,1 +1,4 @@
-<%= render partial: 'shared/cc_form', locals: { cc: @cc, user: @cc.user, disable: true } %>
+<h1><%= @cc.user.first_name + " " + @cc.user.last_name %>: Credit Card ID# <%= @cc.id %></h1>
+<div class="edit-form">
+  <%= render partial: 'shared/cc_form', locals: { cc: @cc, user: @cc.user, disable: true } %>
+</div>

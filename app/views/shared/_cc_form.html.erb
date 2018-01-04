@@ -48,6 +48,6 @@
   </div>
   <br>
   <div class="center">
-    <%= link_to "Remove Card", "#", method: :delete, data: {confirm: "Are you sure you want to remove this card?"}, class: "remove-cc-link" %>
+    <%= link_to "Remove Card", admin_user_credit_card_path(cc), method: "delete", data: { confirm: "Are you sure you want to delete credit card # #{cc.id}?" }, class: "remove-cc-link" %>
   </div>
 </article>
