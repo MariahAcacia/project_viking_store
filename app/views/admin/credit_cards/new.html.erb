@@ -1,1 +1,2 @@
-<%= render partial: 'shared/cc_form', locals: { user: @user, cc: @cc } %> 
+<h1>New Credit Card For: <%= @user.first_name + " " + @user.last_name %></h1>
+<%= render partial: 'shared/cc_form', locals: { user: @user, cc: @cc, disable: false } %>

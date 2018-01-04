@@ -33,7 +33,7 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if CreditCard.exists?(user_id: @user.id)
-      @cc = CreditCard.find(@user.id)
+      @cc = CreditCard.where(user_id: @user.id).first
     end
     @orders = Order.where(user_id: @user.id)
     @shopping_cart = @orders.where(checkout_date: nil).ids

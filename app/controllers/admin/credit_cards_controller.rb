@@ -13,22 +13,34 @@ class Admin::CreditCardsController < ApplicationController
   def create
     @cc = CreditCard.new(whitelisted_params)
     if @cc.save
-      render 'user/:id/show'
+      flash[:success] = "Credit Card Successfully Added to User Profile"
+      redirect_to admin_user_path(@cc.user)
     else
-      redirect_to :new
+      flash[:danger] = "Credit Card Could NOT be Added to User Profile - See Errors on Form"
+      render :new
     end
   end
 
 
   def show
+    @cc = CreditCard.find(params[:id])
   end
 
 
   def edit
+    @cc = CreditCard.find(params[:id])
   end
 
 
   def update
+    @cc = CreditCard.find(params[:id])
+    if @cc.update(whitelisted_params)
+      flash[:success] = "Credit Card Successfully Added to User Profile"
+      redirect_to admin_user_path(@cc.user)
+    else
+      flash[:danger] = "Credit Card Could NOT be Added to User Profile - See Errors on Form"
+      render :edit
+    end
   end
 
 

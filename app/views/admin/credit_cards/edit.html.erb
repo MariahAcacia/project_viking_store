@@ -1,0 +1,6 @@
+<h1>Edit Credit Card For: <%= @cc.user.first_name + " " + @cc.user.last_name %></h1>
+<article class="edit-form">
+<%= render partial: 'shared/cc_form', locals: { cc: @cc,
+                                                user: @cc.user,
+                                                disable: false } %>
+</article>

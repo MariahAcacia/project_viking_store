@@ -1,17 +1,53 @@
-<%= form_for [:admin, user, cc] do |f| %>
-  <%= f.label :first_name, "First Name:" %>
-  <%= f.text_field :first_name, value: user.first_name, disabled: true %><br>
-  <%= f.label :last_name, "Last Name:" %>
-  <%= f.text_field :last_name, value: user.last_name, disabled: true %><br>
-  <%= f.hidden_field :user_id, value: user.id %> 
-  <%= f.label :card_number, "Number:" %>
-  <%= f.number_field :card_number %><br>
-  <%= f.label :exp_month, "Expiration Month:" %>
-  <%= f.number_field :exp_month %><br>
-  <%= f.label :exp_year, "Expiration Year:" %>
-  <%= f.number_field :exp_year %><br>
-  <%= f.label :ccv, "CCV:" %>
-  <%= f.number_field :ccv %><br>
-  <%= f.submit %>
-<% end %>
-<%= link_to "Remove Card", "#", method: :delete, data: {confirm: "Are you sure you want to remove this card?"} %>
+<article>
+  <%= form_for [:admin, user, cc] do |f| %>
+  <div class="row">
+    <%= f.label :brand, "Brand:", class: "col-sm-3 col-sm-offset-2 control-label" %>
+    <div class="col-sm-5">
+      <%= display_form_errors(cc, :brand) %>
+      <%= f.text_field :brand, disabled: disable, class: "cc-inputs" %><br>
+    </div>
+  </div>
+  <div class="row">
+    <%= f.label :card_number, "Number:", class: "col-sm-3 col-sm-offset-2 control-label" %>
+    <div class="col-sm-5">
+      <%= f.number_field :card_number, disabled: disable, class: "cc-inputs" %><br>
+    </div>
+    </div>
+  <div class="row">
+    <%= f.label :exp_month, "Expiration Month:", class: "col-sm-3 col-sm-offset-2 control-label" %>
+    <div class="col-sm-5">
+      <%= f.number_field :exp_month, disabled: disable, class: "cc-inputs" %><br>
+    </div>
+  </div>
+  <div class="row">
+    <%= f.label :exp_year, "Expiration Year:", class: "col-sm-3 col-sm-offset-2 control-label" %>
+    <div class="col-sm-5">
+      <%= f.number_field :exp_year, disabled: disable, class: "cc-inputs" %><br>
+    </div>
+  </div>
+  <div class="row">
+    <%= f.label :ccv, "CCV:", class: "col-sm-3 col-sm-offset-2 control-label" %>
+    <div class="col-sm-5">
+      <%= f.number_field :ccv, disabled: disable, class: "cc-inputs" %><br>
+    </div>
+  </div>
+  <%= f.hidden_field :user_id, value: user.id %>
+  <br>
+    <div class="center">
+      <% if current_page?(admin_user_path(user)) %>
+        <% if cc.persisted? %>
+          <%= link_to "Update Credit Card", edit_admin_user_credit_card_path(user,cc), class: "btn-lg btn-primary cc-button" %>
+          <%= link_to "Create New Credit Card", new_admin_user_credit_card_path(user), class: "btn-lg btn-primary cc-button" %>
+        <% else %>
+          <%= link_to "Create New Credit Card", new_admin_user_credit_card_path(user), class: "btn-lg btn-primary cc-button" %>
+        <% end %>
+      <% else %>
+        <%= f.submit "#{cc.persisted? ? "Update" : "Create New"} Credit Card", class: "btn-lg btn-primary align-center", id: "submit-btn" %>
+      <% end %>
+  <% end %>
+  </div>
+  <br>
+  <div class="center">
+    <%= link_to "Remove Card", "#", method: :delete, data: {confirm: "Are you sure you want to remove this card?"}, class: "remove-cc-link" %>
+  </div>
+</article>

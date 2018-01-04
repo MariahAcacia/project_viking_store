@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :credit_cards, only: [:new, :create, :edit, :update, :destroy]
     end
     resources :addresses
+    resources :credit_cards, only: [:show]
   end
 
 end
