@@ -17,8 +17,8 @@
       Default Billing Address: <br>
       <%= billing.label :street_address, "Street Address: " %>
       <%= billing.text_field :street_address %>
-      <%= billing.label :city_id, "City: "%>
-      <%= billing.select :city_id, City.all.map { |c| [c.name, c.id] } %>
+      <%= billing.label :city, "City: "%>
+      <%= billing.text_field :city %>
       <%= billing.label :state_id, "State: " %>
       <%= billing.select :state_id, State.all.map { |s| [s.name, s.id] } %>
       <%= billing.label :zip_code %>
@@ -28,25 +28,24 @@
       Default Shipping Address: <br>
       <%= shipping.label :street_address, "Street Address: " %>
       <%= shipping.text_field :street_address %>
-      <%= shipping.label :city_id, "City: "%>
-      <%= shipping.select :city_id, City.all.map { |c| [c.name, c.id] } %>
+      <%= shipping.label :city, "City: "%>
+      <%= shipping.text_field :city %>
       <%= shipping.label :state_id, "State: " %>
       <%= shipping.select :state_id, State.all.map { |s| [s.name, s.id] } %>
       <%= shipping.label :zip_code %>
       <%= shipping.text_field :zip_code %><br>
     <% end %>
-  
+
     <div class="align-center">
       <%= f.submit "#{(user.persisted? ? 'Update' : 'Create')} #{user.first_name} #{user.last_name}", class: "btn-lg btn-primary align-center",  id: "user-create-btn"  %><br>
     </div>
   <% else %>
     <%= f.label :billing_id, "Default Billing Address: ", id: "address-input"%><br>
     <%= display_form_errors(user, :billing_id) %>
-    <%= f.select :billing_id, user.addresses.map {|c| [c.street_address, c.id]} %><br>
+    <%= f.select :billing_id, user.addresses.collect {|c| [c.street_address, c.id]}, inlcude_blank: true %><br>
     <%= f.label :shipping_id, "Default Shipping Address: ", id: "address-input"%><br>
     <%= display_form_errors(user, :shipping_id) %>
     <%= f.select :shipping_id, user.addresses.map {|c| [c.street_address, c.id]} %><br>
-    <%= link_to "View Saved Addresses", admin_user_addresses_path(user.id) %><br>
     <div class="align-center">
       <%= f.submit "#{(user.persisted? ? 'Update' : 'Create')} #{user.first_name} #{user.last_name}", class: "btn-lg btn-primary align-center", id: "user-create-btn" %><br>
     <div>

@@ -1,5 +1,6 @@
 class State < ApplicationRecord
 
+  
   has_many :addresses
   has_many :orders, through: :addresses
 

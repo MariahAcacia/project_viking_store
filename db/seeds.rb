@@ -215,8 +215,8 @@ srand(42)
 # Now, at last, we are going to run all these methods to create our data!
 
 # Create states and cities
-STATES.each { |state| generate_state state }
-puts "Created states"
+# STATES.each { |state| generate_state state }
+# puts "Created states"
 
 (MULTIPLIER * 10).times { generate_city }
 puts "Created cities"
@@ -229,12 +229,12 @@ puts "Created categories"
 puts "Created products"
 
 # Create users
-(MULTIPLIER * 10).times { generate_user }
-puts "Created users"
-
-# Create orders and add the credit card records.
-(MULTIPLIER * 30).times { generate_order }
-puts "Created orders"
-generate_credit_cards_for_checked_out_orders
-puts "Created credit card orders"
-puts "DONE!"
+# (MULTIPLIER * 10).times { generate_user }
+# puts "Created users"
+#
+# # Create orders and add the credit card records.
+# (MULTIPLIER * 30).times { generate_order }
+# puts "Created orders"
+# generate_credit_cards_for_checked_out_orders
+# puts "Created credit card orders"
+# puts "DONE!"

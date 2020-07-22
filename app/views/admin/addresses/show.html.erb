@@ -36,7 +36,7 @@
     <div class="col-sm-3">
       <%= f.label :zip_code, "Zip Code: " %>
     </div>
-    <%= f.number_field :zip_code, disabled: true %>
+    <%= f.text_field :zip_code, disabled: true %>
   </div>
   <div class="underline links">
     <%= link_to "Edit Address", edit_admin_address_path(@address) %><br>

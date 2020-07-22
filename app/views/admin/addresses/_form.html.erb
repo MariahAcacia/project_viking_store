@@ -41,7 +41,7 @@
       <%= f.label :zip_code, "Zip Code: " %>
     </div>
     <%= display_form_errors(address, :zip_code) %>
-    <%= f.number_field :zip_code %>
+    <%= f.text_field :zip_code %>
   </div>
   <div class="center">
     <%= f.submit "#{address.persisted? ? "Update" : "Create New"}",  class: "btn-lg btn-primary align-center", id: "submit-btn"%>

@@ -12,7 +12,8 @@ class User < ApplicationRecord
             length: { maximum: 64,
                       minimum: 1  }
   validates :email,
-            format: { with: /@/ }
+            format: { with: /@/ },
+            uniqueness: true
 
 
   FIRST_ORDER_DATE = Order.select(:created_at).first

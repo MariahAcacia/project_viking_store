@@ -1,7 +1,4 @@
 module Admin::AddressesHelper
 
 
-    
-
-
 end
