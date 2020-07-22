@@ -27,7 +27,7 @@ class Admin::DashboardController < ApplicationController
   # end
 
   def index
-    if User.any?
+    if User.any? && Order.any? && Product.any? && OrderContent.any?
       @dashboard_stats = {
         user_stats: User.user_statistics,
         order_stats: Order.order_statistics,

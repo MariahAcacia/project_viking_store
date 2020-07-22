@@ -15,13 +15,13 @@ class Order < ApplicationRecord
     order_stats = {}
     order_stats[:sevendays_count] = count_since(7.days.ago)
     order_stats[:thirtydays_count] = count_since(30.days.ago)
-    order_stats[:total_count] = count_since(FIRST_ORDER_DATE.created_at)
+    order_stats[:total_count] = FIRST_ORDER_DATE ? count_since(FIRST_ORDER_DATE.created_at) : "n/a"
     order_stats[:sevendays_average] = average_order_value(7.days.ago)
     order_stats[:thirtydays_average] = average_order_value(30.days.ago)
     order_stats[:sevendays_largest] = largest_order_value(7.days.ago)
     order_stats[:thirtydays_largest] = largest_order_value(30.days.ago)
-    order_stats[:total_average] = average_order_value(FIRST_ORDER_DATE.created_at)
-    order_stats[:total_largest] = largest_order_value(FIRST_ORDER_DATE.created_at)
+    order_stats[:total_average] = FIRST_ORDER_DATE ? average_order_value(FIRST_ORDER_DATE.created_at) : "n/a"
+    order_stats[:total_largest] = FIRST_ORDER_DATE ? largest_order_value(FIRST_ORDER_DATE.created_at) : "n/a"
     order_stats
   end
 

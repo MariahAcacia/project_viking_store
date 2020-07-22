@@ -22,7 +22,7 @@ class User < ApplicationRecord
     user_stats_hash = {}
     user_stats_hash[:sevendays] = count_since(7.days.ago)
     user_stats_hash[:thirtydays] = count_since(30.days.ago)
-    user_stats_hash[:total] = count_since(FIRST_ORDER_DATE.created_at)
+    user_stats_hash[:total] = FIRST_ORDER_DATE ? count_since(FIRST_ORDER_DATE.created_at) : "n/a" 
     user_stats_hash
   end
 
